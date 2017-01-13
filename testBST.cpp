@@ -12,7 +12,7 @@ using namespace std;
 
 /**
  * A test driver for the BST int class and class template.
- * PA1 CSE 100 2016
+ * PA1 CSE 100 2017
  * Author: Christine Alvarado and YOU
  * TODO: Add more tests
  */
@@ -21,14 +21,24 @@ int main() {
     /* Create an STL vector of some ints */
     /*test*/
     vector<int> v;
+    /*
     v.push_back(3);
     v.push_back(4);
     v.push_back(1);
     v.push_back(100);
     v.push_back(-33);
+    */
 
+    v.push_back(6);
+    v.push_back(3);
+    v.push_back(4);
+    v.push_back(10);
+    v.push_back(8);
+    
     /* Create an instance of BST holding int */
     BSTInt b;
+
+    // BSTInt is the tree. The tree creates a root node BSTNodeInt. 
 
     // Could use: for(auto item : v) { instead of the line below
     for(int item : v) {
@@ -40,13 +50,32 @@ int main() {
         }
     }
 
+    // We expect min for v to be 3 
+    if (b.getMin() != 3) {
+        cout << "Minimum value is incorrectly " << b.getMin() << endl;
+        //return -1;
+    }
+/*
+    newPtr = b;
+    
+    // Testing for minimum 
+    while (newPtr->left) {
+        newPtr = newPtr->left; 
+    }
 
-    /* Test size. */
+    // We expect min for v to be 3 
+    if (newPtr->data != 3) {
+        cout << "Minimum value is " << newPtr->data << endl;
+        return -1;
+    }
+
+    // Test size. 
     cout << "Size is: " << b.size() << endl;
     if(b.size() != v.size()) {
         cout << "... which is incorrect." << endl;
         return -1;
     }
+*/
 
     /* Test find return value. */
     // Test the items that are already in the tree

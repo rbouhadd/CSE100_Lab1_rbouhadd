@@ -29,7 +29,35 @@ bool BSTInt::insert(int item)
   }
 
   BSTNodeInt* curr = root;
-  
+ 
+  while (true) {
+    if (item < curr->data) {
+      if (curr->left == 0) {
+        BSTNodeInt* newNode = new BSTNodeInt(item); 
+        curr->left = newNode; 
+        newNode->parent = curr;
+        ++isize; 
+        return true; 
+      }
+      curr = curr->left; 
+    }
+    else if (curr->data < item) {
+      if (curr->right == 0) {
+        BSTNodeInt* newNode = new BSTNodeInt(item); 
+        curr->right = newNode;
+        newNode->parent = curr;
+        ++isize;
+        return true;
+      }
+      curr = curr->right;
+    }
+    else {
+      return false;
+    }
+  }
+
+/*
+ 
   while (curr->left && curr->right) {
     if (item < curr->data) {
       curr = curr->left;
@@ -55,6 +83,23 @@ bool BSTInt::insert(int item)
 
   ++isize;
   return true;
+*/
+}
+
+/**
+ * Creating helper function that returns minimum 
+ */
+int BSTInt::getMin() {
+
+    // Create a newPtr to the root
+    BSTNodeInt * newPtr = root;
+
+    /* Testing for minimum */
+    while (newPtr->left) {
+        newPtr = newPtr->left; 
+    }
+
+    return newPtr->data; 
 
 }
 

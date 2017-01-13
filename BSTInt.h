@@ -6,7 +6,7 @@
 
 /* Header file for a BST class that holds ints.  You are welcome to add methods and variables */
 /* Author: Christine Alvarado 
- * Author: YOUR NAME HERE
+ * Author: Stephanie Chen, Ramsey Bouhaddou
  */
 
 class BSTInt {
@@ -38,6 +38,10 @@ public:
    */
   bool insert(int item);
 
+  /**
+   *  Created a helper function to return minimum in BST 
+   */
+  int getMin();
 
   /** Find a Data item in the BST.
    *  Return true if the item is in the BST or false otherwise

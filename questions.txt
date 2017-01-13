@@ -1,10 +1,11 @@
+*******
 Q1. What are all the files that are created when I type 'make bst' for the first time?
 g++      -g -Wall -std=c++11 -c testBST.cpp                                                                        
 g++      -g -Wall -std=c++11 -c BSTInt.cpp                                                                         
 g++      -g -Wall -std=c++11 -c BSTNodeInt.cpp                                                                     
 g++      -g -Wall -std=c++11 -o bst testBST.o BSTInt.o BSTNodeInt.o BST.hpp BSTNode.hpp BSTIterator.hpp  
 
-
+********
 Q2: In the file BSTInt.cpp, remove the name scope from the insert function. That is, change the function header from bool BSTInt::insert(int item) to bool insert(int item)
 g++      -g -Wall -std=c++11 -c BSTInt.cpp                                                                       
 BSTInt.cpp: In function ‘bool insert(int)’:                                                                      
@@ -23,3 +24,23 @@ BSTInt.cpp:56:5: error: ‘isize’ was not declared in this scope
 make: *** [BSTInt.o] Error 1   
 
 By removing the name scope we removed insert's connection to the BSTInt class and subsequently cannot figure out what isize and root is because it is not in the same scope.
+
+
+*********
+Q3: In a sentence or two, describe the bug in the code. What function was it, and what was it?
+
+The bug was in the insert function in BSTInt.cpp. The function would replace the pointer
+to an existing node if that node's parent did not have both left and right children. 
+Basically, if a parent had a left child, but no right child, and we tried to insert data
+that was less than the current parent node, it would replace (overwrite) the existing
+left child, making that original left child lost.  
+
+
+*********
+Q4: In about a paragraph, describe the process you used to find and fix the bug. Include any tools you used and how you used them. If you were able to spot the bug by just looking at the code, describe your reasoning process in detail. We're not looking for the corrected code here (we already have that in your .cpp file). Rather we're looking for a description of your debugging process. Please be specific.
+
+We created a set of 5 data, and played around with the order in which each was added to
+the BST. We noticed, as stated in Q3, that certain nodes would be removed/lost if the original
+parent didn't already have both a left and right child. If we attempted to place another child
+where the parent already had a child, the original child would be lost. That is how we spotted
+the bug. We corrected the code in insert() to fix this issue.  
