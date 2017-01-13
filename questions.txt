@@ -1,0 +1,25 @@
+Q1. What are all the files that are created when I type 'make bst' for the first time?
+g++      -g -Wall -std=c++11 -c testBST.cpp                                                                        
+g++      -g -Wall -std=c++11 -c BSTInt.cpp                                                                         
+g++      -g -Wall -std=c++11 -c BSTNodeInt.cpp                                                                     
+g++      -g -Wall -std=c++11 -o bst testBST.o BSTInt.o BSTNodeInt.o BST.hpp BSTNode.hpp BSTIterator.hpp  
+
+
+Q2: In the file BSTInt.cpp, remove the name scope from the insert function. That is, change the function header from bool BSTInt::insert(int item) to bool insert(int item)
+g++      -g -Wall -std=c++11 -c BSTInt.cpp                                                                       
+BSTInt.cpp: In function ‘bool insert(int)’:                                                                      
+BSTInt.cpp:25:8: error: ‘root’ was not declared in this scope                                                    
+   if (!root) {                                                                                                  
+        ^                                                                                                        
+BSTInt.cpp:27:7: error: ‘isize’ was not declared in this scope                                                   
+     ++isize;                                                                                                    
+       ^                                                                                                         
+BSTInt.cpp:31:22: error: ‘root’ was not declared in this scope                                                   
+   BSTNodeInt* curr = root;                                                                                      
+                      ^                                                                                          
+BSTInt.cpp:56:5: error: ‘isize’ was not declared in this scope                                                   
+   ++isize;                                                                                                      
+     ^                                                                                                           
+make: *** [BSTInt.o] Error 1   
+
+By removing the name scope we removed insert's connection to the BSTInt class and subsequently cannot figure out what isize and root is because it is not in the same scope.

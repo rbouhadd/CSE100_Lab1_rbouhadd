@@ -5,7 +5,7 @@ CC= g++
 
 # include debugging symbols in object files,
 # and enable all warnings
-FLAGS= -g -Wall -std=c++11
+FLAGS= -g -Wall -std=c++0x
 
 BSTOBJ=  BSTInt.o BSTNodeInt.o
 
