@@ -19,72 +19,119 @@ int main() {
 
 	/* Create an STL vector of some ints */
 	/*test*/
-	vector<int> v;
-	
-	/*
-	   v.push_back(3);
-	   v.push_back(4);
-	   v.push_back(1);
-	   v.push_back(100);
-	   v.push_back(-33);
-	   */
 
-	   
-	   v.push_back(6);
-	  /* v.push_back(3);
-	   v.push_back(4);
-	   v.push_back(10);
-	   v.push_back(8);
-	   */
-	
+	vector<int> v0; // Empty tree
+	vector<int> v1; // One node tree
+	vector<int> v5; // Five node tree
+
+	v1.push_back(4); 
+
+	v5.push_back(3);
+	v5.push_back(4);
+	v5.push_back(1);
+	v5.push_back(100);
+	v5.push_back(-33);
+	v5.push_back(0);
+
 	/* Create an instance of BST holding int */
-	BSTInt b;
+	BSTInt b0;
+	BSTInt b1;
+	BSTInt b5;
 
 	// BSTInt is the tree. The tree creates a root node BSTNodeInt. 
 
 	// Could use: for(auto item : v) { instead of the line below
-	if (v.size()) {
-		for(int item : v) {
+	// Empty tree should have size 0
+	if (v0.size() != 0) {
+		cout << "Empty tree's size is wrong. It is " << v0.size() << endl;  
+	}
 
-			bool pr = b.insert(item);
+	// One node tree
+	if (v1.size()) {
+		for(int item : v1) {
+
+			bool pr = b1.insert(item);
 			if(! pr ) {
 				cout << "Incorrect bool return value when inserting " << item 
 					<< endl;
-				return -1;
 			}
 		}
 	}
 
+	// Five node tree
+	if (v5.size()) {
+		for(int item : v5) {
 
-	/*
-	   newPtr = b;
-
-	// Testing for minimum 
-	while (newPtr->left) {
-	newPtr = newPtr->left; 
+			bool pr = b5.insert(item);
+			if(! pr ) {
+				cout << "Incorrect bool return value when inserting " << item 
+					<< endl;
+			}
+		}
 	}
 
-	// We expect min for v to be 3 
-	if (newPtr->data != 3) {
-	cout << "Minimum value is " << newPtr->data << endl;
-	return -1;
-	}
-	*/
-	// Test size. 
-	cout << "Size is: " << b.size() << endl;
-	if(b.size() != v.size()) {
+	// Test size of empty tree
+	cout << "Size is: " << b0.size() << endl;
+	if(b0.size() != v0.size()) {
 		cout << "... which is incorrect." << endl;
-		return -1;
 	}
 
+	// Test size of one node tree
+	cout << "Size is: " << b1.size() << endl;
+	if(b1.size() != v1.size()) {
+		cout << "... which is incorrect." << endl;
+	}
+	// Test size of six node tree 
+	cout << "Size is: " << b5.size() << endl;
+	if(b5.size() != v5.size()) {
+		cout << "... which is incorrect." << endl;
+	}
 
 	/* Test find return value. */
 	// Test the items that are already in the tree
-	for(int item : v) {
-		if(!b.find(item)) {
+	for(int item : v0) {
+		if(!b0.find(item)) {
 			cout << "Incorrect return value when finding " << item << endl;
-			return -1;
 		}
+	}
+
+	for(int item : v1) {
+		if(!b1.find(item)) {
+			cout << "Incorrect return value when finding " << item << endl;
+		}
+	}
+
+	for(int item : v5) {
+		if(!b5.find(item)) {
+			cout << "Incorrect return value when finding " << item << endl;
+		}
+	}
+
+	// Test empty() function. True if BST empty. False otherwise.
+	if ( b0.empty() != true ) {
+		cout << "Incorrect return value for empty BST" << endl; 
+	}
+
+	if ( b1.empty() != false ) {
+		cout << "Incorrect return value for one-node BST" << endl; 
+	}
+
+	if ( b5.empty() != false ) {
+		cout << "Incorrect return value for six-node BST" << endl; 
+	}
+	
+
+	// Test heights
+	if ( b0.height() != -1 ) {
+		cout << "Incorrect height for empty BST" << endl;
+	}
+
+	if ( b1.height() != 0 ) {
+		cout << "Incorrect height for one-node BST. Height is " << b1.height() << endl;
+	}
+
+	if ( b5.height() != 3 ) {
+		cout << "Incorrect height for six-node BST. Height is " << b5.height() << endl;
 	}
 
 
@@ -160,9 +207,6 @@ int main() {
 
 */
 
-	// ADD MORE TESTS HERE.  You might also want to change what is input
-	// into the vector v.
-
-	cout << "All tests passed!" << endl;
+	cout << "We were able to run through all tests w/o crashing" << endl;
 	return 0;
 }

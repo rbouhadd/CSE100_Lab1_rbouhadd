@@ -8,7 +8,7 @@ class BSTNodeInt {
 public:
   // We'll make the instance variables public.
   // Arguably we should use getters and setters but there's a lot 
-  //   to learn with this first assignment so let's keep the code a bit shorter for now
+  // to learn with this first assignment so let's keep the code a bit shorter for now
   BSTNodeInt* left;
   BSTNodeInt* right;
   BSTNodeInt* parent;
