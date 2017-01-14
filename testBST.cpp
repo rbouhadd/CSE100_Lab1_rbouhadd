@@ -44,6 +44,7 @@ int main() {
 	// Empty tree should have size 0
 	if (v0.size() != 0) {
 		cout << "Empty tree's size is wrong. It is " << v0.size() << endl;  
+		return -1; 
 	}
 
 	// One node tree
@@ -54,6 +55,7 @@ int main() {
 			if(! pr ) {
 				cout << "Incorrect bool return value when inserting " << item 
 					<< endl;
+				return -1; 
 			}
 		}
 	}
@@ -66,6 +68,7 @@ int main() {
 			if(! pr ) {
 				cout << "Incorrect bool return value when inserting " << item 
 					<< endl;
+				return -1; 
 			}
 		}
 	}
@@ -74,17 +77,20 @@ int main() {
 	cout << "Size is: " << b0.size() << endl;
 	if(b0.size() != v0.size()) {
 		cout << "... which is incorrect." << endl;
+		return -1; 
 	}
 
 	// Test size of one node tree
 	cout << "Size is: " << b1.size() << endl;
 	if(b1.size() != v1.size()) {
 		cout << "... which is incorrect." << endl;
+		return -1; 
 	}
 	// Test size of six node tree 
 	cout << "Size is: " << b5.size() << endl;
 	if(b5.size() != v5.size()) {
 		cout << "... which is incorrect." << endl;
+		return -1; 
 	}
 
 	/* Test find return value. */
@@ -92,46 +98,55 @@ int main() {
 	for(int item : v0) {
 		if(!b0.find(item)) {
 			cout << "Incorrect return value when finding " << item << endl;
+			return -1; 
 		}
 	}
 
 	for(int item : v1) {
 		if(!b1.find(item)) {
 			cout << "Incorrect return value when finding " << item << endl;
+			return -1; 
 		}
 	}
 
 	for(int item : v5) {
 		if(!b5.find(item)) {
 			cout << "Incorrect return value when finding " << item << endl;
+			return -1; 
 		}
 	}
 
 	// Test empty() function. True if BST empty. False otherwise.
 	if ( b0.empty() != true ) {
 		cout << "Incorrect return value for empty BST" << endl; 
+		return -1; 
 	}
 
 	if ( b1.empty() != false ) {
 		cout << "Incorrect return value for one-node BST" << endl; 
+		return -1; 
 	}
 
 	if ( b5.empty() != false ) {
 		cout << "Incorrect return value for six-node BST" << endl; 
+		return -1; 
 	}
-	
+
 
 	// Test heights
 	if ( b0.height() != -1 ) {
 		cout << "Incorrect height for empty BST" << endl;
+		return -1; 
 	}
 
 	if ( b1.height() != 0 ) {
 		cout << "Incorrect height for one-node BST. Height is " << b1.height() << endl;
+		return -1; 
 	}
 
 	if ( b5.height() != 3 ) {
 		cout << "Incorrect height for six-node BST. Height is " << b5.height() << endl;
+		return -1; 
 	}
 
 
