@@ -8,7 +8,9 @@
     Delete every node in this BST.
 */
 BSTInt::~BSTInt() {
-  deleteAll(root);
+  if (root) {
+    deleteAll(root);
+  }
 }
 
 /** Given a reference to a Data item, insert a copy of it in this BST.
@@ -86,23 +88,7 @@ bool BSTInt::insert(int item)
 */
 }
 
-/**
- * Creating helper function that returns minimum 
- */
-int BSTInt::getMin() {
-
-    // Create a newPtr to the root
-    BSTNodeInt * newPtr = root;
-
-    /* Testing for minimum */
-    while (newPtr->left) {
-        newPtr = newPtr->left; 
-    }
-
-    return newPtr->data; 
-
-}
-
+ 
 
 /** Find a Data item in the BST.
  *  Return true if the item is in the BST or false otherwise
@@ -164,5 +150,13 @@ bool BSTInt::empty() const
  */
 void BSTInt::deleteAll(BSTNodeInt* n)
 {
-  // TODO
+  if ( n->left ) {
+	deleteAll( n->left );	
+  }
+
+  if ( n->right ) {
+	deleteAll( n->right );
+  }
+  
+  delete( n );
 }
