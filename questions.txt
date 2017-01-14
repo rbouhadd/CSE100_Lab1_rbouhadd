@@ -44,3 +44,7 @@ the BST. We noticed, as stated in Q3, that certain nodes would be removed/lost i
 parent didn't already have both a left and right child. If we attempted to place another child
 where the parent already had a child, the original child would be lost. That is how we spotted
 the bug. We corrected the code in insert() to fix this issue.  
+
+
+*********
+

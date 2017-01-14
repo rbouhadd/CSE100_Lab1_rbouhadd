@@ -38,10 +38,6 @@ public:
    */
   bool insert(int item);
 
-  /**
-   *  Created a helper function to return minimum in BST 
-   */
-  int getMin();
 
   /** Find a Data item in the BST.
    *  Return true if the item is in the BST or false otherwise
