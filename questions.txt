@@ -47,4 +47,35 @@ the bug. We corrected the code in insert() to fix this issue.
 
 
 *********
+Q5: Look at header for the insert method in the BST.hpp and compare it to the header of the insert method in BSTInt.h. For each class state whether the insert method passes its argument by value or by reference. Explain why each method probably uses the method that it uses (i.e. if pass by value, explain why not pass by reference, and if pass by reference, explain why not pass by value).
+
+std::pair<iterator, bool> insert(const Data& item);
+bool insert(int item);
+
+The BST.hpp insert method passes its argument by reference whereas the BSTInt.h passes its argument by value. When passing by value we get a copy of the value that we can manipulate independently to the original value. If we pass by reference we can effect the original value inside the scope of the function. 
+
+&*^%*&^#*@^//TODO 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
