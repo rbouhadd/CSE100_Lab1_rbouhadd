@@ -166,16 +166,22 @@ if ( b5.height() != 3 ) {
 // Test the template version of the BST with ints 
 BST<int> btemp;
 
-vector<int> v; // 7 nodes
-v.push_back(10);
-v.push_back(6);
-v.push_back(5);
-v.push_back(15);
-v.push_back(9);
-v.push_back(8);
-v.push_back(7);
+vector<int> vec0;// 0 Nodes
+vector<int> vec1;// 1 Node
+vector<int> vec7; // 7 nodes
 
-for (int item : v) {
+vec1.push_back(12);
+
+vec7.push_back(10);
+vec7.push_back(6);
+vec7.push_back(5);
+vec7.push_back(15);
+vec7.push_back(9);
+vec7.push_back(8);
+vec7.push_back(7);
+
+//Inserting into the BST
+for (int item : vec7) {
 	// The auto type here is the pair of BSTIterator<int>, bool
 	cout << "Inserting " << item << " into the int template-based BST...";
 	auto p = btemp.insert(item);
@@ -195,9 +201,9 @@ for (int item : v) {
 	cout << "success!" << endl;
 
 }
-/*
+
 // Now test finding the elements we just put in
-for (int item: v) {
+for (int item: vec7) {
 	cout << "Finding " << item << "...." << endl;
 	BSTIterator<int> foundIt = btemp.find(item);
 	if (*(foundIt) != item) {
@@ -214,11 +220,11 @@ for (int item: v) {
 // Test the iterator: The iterator should give an in-order traversal
 
 // Sort the vector, to compare with inorder iteration on the BST
-sort(v.begin(),v.end());
+sort(vec7.begin(),vec7.end());
 
 cout << "traversal using iterator..." << endl;
-auto vit = v.begin(); // returns an iterator pointing to v[0]
-auto ven = v.end(); // returns an iterator pointing to the v[length] past-the-end elmt 
+auto vit = vec7.begin(); // returns an iterator pointing to v[0]
+auto ven = vec7.end(); // returns an iterator pointing to the v[length] past-the-end elmt 
 
 // This is equivalent to BSTIterator<int> en = btemp.end();
 auto en = btemp.end();
@@ -240,7 +246,7 @@ for(; vit != ven; ++vit) {
 	}
 	++it;
 }
-*/
+
 cout << "success!" << endl;
 
 
@@ -248,3 +254,26 @@ cout << "success!" << endl;
 cout << "We were able to run through all tests w/o crashing" << endl;
 return 0;
 }
+
+//Test empty
+if(btemp.empty())==true) return -1;
+
+
+//Test size
+
+
+//Test height
+
+
+
+
+
+
+
+
+
+
+
+
+
+
