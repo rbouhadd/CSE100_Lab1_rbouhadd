@@ -1,3 +1,11 @@
+/**
+ * Names: Stephanie Chen, Ramsey Bouhaddou
+ * Date: January 17, 2017
+ * Overview: BSTNodeInt.h is the header file for a basic binary search tree. 
+ * Assignment #1 
+ */
+
+
 #ifndef BSTNODE_INT_H
 #define BSTNODE_INT_H
 

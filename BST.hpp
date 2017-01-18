@@ -1,3 +1,10 @@
+/**
+ * Names: Stephanie Chen, Ramsey Bouhaddou
+ * Date: January 17, 2017
+ * Overview: BST.hpp creates a basic binary search tree. 
+ * Assignment #1 
+ */
+
 #ifndef BST_HPP
 #define BST_HPP
 #include "BSTNode.hpp"
@@ -63,7 +70,7 @@ public:
 
 
   /** Return true if the BST is empty, else false.
-   */ // TODO
+   */
   bool empty() const;
 
   /** Return an iterator pointing to the first (smallest) item in the BST.
@@ -120,7 +127,7 @@ std::pair<BSTIterator<Data>, bool> BST<Data>::insert(const Data& item) {
   if (!root) {
 		root = new BSTNode<Data>(item);
 		++isize;
-		return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(0), true);
+		return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(root), true);
 	}
 
 	BSTNode<Data>* curr = root;
@@ -132,7 +139,7 @@ std::pair<BSTIterator<Data>, bool> BST<Data>::insert(const Data& item) {
 				curr->left = newNode; 
 				newNode->parent = curr;
 				++isize; 
-				return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(0), true);
+				return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(newNode), true);
 			}
 			curr = curr->left; 
 		}
@@ -142,7 +149,7 @@ std::pair<BSTIterator<Data>, bool> BST<Data>::insert(const Data& item) {
 				curr->right = newNode;
 				newNode->parent = curr;
 				++isize;
-				return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(0), true);
+				return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(newNode), true);
 			}
 			curr = curr->right;
 		}
@@ -249,6 +256,7 @@ bool BST<Data>::empty() const
 template <typename Data>
 BSTIterator<Data> BST<Data>::begin() const
 {
+	// Calls ctor of BSTIterator 
   return BSTIterator<Data>(first(root));
 }
 
@@ -260,7 +268,7 @@ BSTIterator<Data> BST<Data>::end() const
   return BSTIterator<Data>(nullptr);
 }
 
-/** Find the first element of the BST
+/** Find the first (smallest) element of the BST
  * Helper function for the begin method above.
  */ 
 template <typename Data>

@@ -1,3 +1,11 @@
+/**
+ * Names: Stephanie Chen, Ramsey Bouhaddou
+ * Date: January 17, 2017
+ * Overview: BSTIterator.hpp creates a basic binary search tree iterator. 
+ * Assignment #1 
+ */
+
+
 #ifndef BSTITERATOR_HPP
 #define BSTITERATOR_HPP
 #include "BSTNode.hpp"
@@ -42,10 +50,10 @@ public:
    */ 
 template<typename Data>
 BSTIterator<Data>::BSTIterator(BSTNode<Data>* curr) {
-  // TODO
   // Remember the keyword "this" which stores a pointer to the calling object.
   // It will be helpful to distinguish between the parameter "curr" and the 
   // member variable "curr"
+	this->curr = curr; 	
 }
 
 /** Dereference operator. */
@@ -70,12 +78,14 @@ BSTIterator<Data> BSTIterator<Data>::operator++(int) {
   return before;
 }
 
-/** Equality test operator. */ // TODO
+/** Equality test operator. */
 template<typename Data>
 bool BSTIterator<Data>::operator==(BSTIterator<Data> const & other) const {
-  // TODO
   // Notice that other is a reference and not a pointer, thus it cannot be null
   // Return true if other is NOT equal to the calling object
+	if (other.curr == (*this).curr) {
+		return true;
+	}
   // Two iterators are equal if they point to the same BSTNode in the same BST  
 
   return false;
@@ -85,11 +95,13 @@ bool BSTIterator<Data>::operator==(BSTIterator<Data> const & other) const {
 /** Inequality test operator. */ 
 template<typename Data>
 bool BSTIterator<Data>::operator!=(BSTIterator<Data> const & other) const {
-  // TODO
+  
   // Notice that other is a reference and not a pointer, thus it cannot be null
   // Return true if other is NOT equal to the calling object
+	if (other.curr != (*this).curr) { 
+		return true;
+	}
   // Two iterators are equal if they point to the same BSTNode in the same BST
-
   return false;
 
 }

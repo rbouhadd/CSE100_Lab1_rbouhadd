@@ -1,13 +1,17 @@
+/**
+ * Names: Stephanie Chen, Ramsey Bouhaddou
+ * Date: January 17, 2017
+ * Overview: BSTInt.h creates a basic binary search tree. 
+ * Assignment #1 
+ */
+
 #ifndef BST_INT_H
 #define BST_INT_H
 
 #include "BSTNodeInt.h"
 #include <iostream>
 
-/* Header file for a BST class that holds ints.  You are welcome to add methods and variables */
-/* Author: Christine Alvarado 
- * Author: Stephanie Chen, Ramsey Bouhaddou
- */
+
 
 class BSTInt {
 

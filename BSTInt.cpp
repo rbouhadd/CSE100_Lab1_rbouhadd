@@ -1,3 +1,12 @@
+/**
+ * Names: Stephanie Chen, Ramsey Bouhaddou
+ * Date: January 17, 2017
+ * Overview: BSTInt.cpp is the implementation that
+ * creates a basic binary search tree. 
+ * Assignment #1 
+ */
+
+
 #include <iostream>
 #include "BSTInt.h"
 using namespace std;

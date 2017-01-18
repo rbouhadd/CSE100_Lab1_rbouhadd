@@ -1,3 +1,11 @@
+/**
+ * Names: Stephanie Chen, Ramsey Bouhaddou
+ * Date: January 17, 2017
+ * Overview: main.hpp creates a basic binary search tree. 
+ * Assignment #1 
+ */
+
+
 #include "BST.hpp"
 #include <iostream>
 #include <algorithm>

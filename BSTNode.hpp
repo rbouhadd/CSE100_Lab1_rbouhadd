@@ -1,3 +1,11 @@
+/**
+ * Names: Stephanie Chen, Ramsey Bouhaddou
+ * Date: January 17, 2017
+ * Overview: BSTNode.hpp creates a basic binary search tree node. 
+ * Assignment #1 
+ */
+
+
 #ifndef BSTNODE_HPP
 #define BSTNODE_HPP
 #include <iostream>
@@ -13,9 +21,9 @@ class BSTNode {
 
 public:
 
-  BSTNode<Data>* left;
-  BSTNode<Data>* right;
-  BSTNode<Data>* parent;
+  BSTNode<Data>* left = NULL;
+  BSTNode<Data>* right = NULL;
+  BSTNode<Data>* parent = NULL;
   Data const data;   // the const Data in this node.
 
   /** Constructor.  Initialize a BSTNode with the given Data item,
@@ -46,16 +54,26 @@ BSTNode<Data>::BSTNode(const Data & d) : data(d), left(0), right(0), parent(0) {
 template <typename Data>
 BSTNode<Data>* BSTNode<Data>::successor()
 {
-	
-	if(right){
-		BSTNode<Data>* curr = right;
-		
-		while(curr->left){
-			curr = curr->left;
+	BSTNode<Data>* curr = right;
+
+	// if the node we're trying to find a successor for has a right child 
+	if(right) {
+		while(curr->left) {
+			curr = curr->left; 
 		}
 		return curr;
 	}
-	else return 0;
+
+	if(!right){
+		if(curr->data < curr->parent->data) {
+			return parent;
+		}
+		if(curr->parent->data < curr->data) {
+			return curr->parent->parent;
+		}
+	}
+
+	return 0;
 }
 
 /** Overload operator<< to print a BSTNode's fields to an ostream. */

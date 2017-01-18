@@ -1,3 +1,11 @@
+/**
+ * Names: Stephanie Chen, Ramsey Bouhaddou
+ * Date: January 17, 2017
+ * Overview: BSTNodeInt.cpp is the implementation for a binary search tree. 
+ * Assignment #1 
+ */
+
+
 #include "BSTNodeInt.h"
 
 #include <iomanip>

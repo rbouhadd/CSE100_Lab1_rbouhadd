@@ -52,13 +52,11 @@ Q5: Look at header for the insert method in the BST.hpp and compare it to the he
 std::pair<iterator, bool> insert(const Data& item);
 bool insert(int item);
 
-The BST.hpp insert method passes its argument by reference whereas the BSTInt.h passes its argument by value. When passing by value we get a copy of the value that we can manipulate independently to the original value. If we pass by reference we can effect the original value inside the scope of the function. 
-
-&*^%*&^#*@^//TODO 
+The BST.hpp insert method passes its argument by reference whereas the BSTInt.h passes its argument by value. When passing by value we get a copy of the value that we can manipulate independently of the original value. If we pass by reference we can effect the original value inside the scope of the function. 
 
 
-
-
+*********
+Q6: 
 
 
 
