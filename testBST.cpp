@@ -164,7 +164,9 @@ if ( b5.height() != 3 ) {
 
 
 // Test the template version of the BST with ints 
-BST<int> btemp;
+BST<int> bst0;
+BST<int> bst1;
+BST<int> bst7;
 
 vector<int> vec0;// 0 Nodes
 vector<int> vec1;// 1 Node
@@ -181,10 +183,32 @@ vec7.push_back(8);
 vec7.push_back(7);
 
 //Inserting into the BST
+//vec1
+for (int item : vec1) {
+	// The auto type here is the pair of BSTIterator<int>, bool
+	cout << "Inserting " << item << " into the int template-based BST...";
+	auto p = bst1.insert(item);
+	// p.first is the iterator
+	if (*(p.first) != item) {
+		cout << "Wrong iterator returned.  "
+			<< "Expected " << item << " but got " << *(p.first) << endl;
+		return -1;
+	}
+	
+	// p.second is the bool 
+	if (!p.second) {
+		cout << "Wrong boolean returned.  Expected true but got " 
+			<< p.second << endl;
+		return -1;
+	}
+	cout << "success!" << endl;
+
+}
+//vec7
 for (int item : vec7) {
 	// The auto type here is the pair of BSTIterator<int>, bool
 	cout << "Inserting " << item << " into the int template-based BST...";
-	auto p = btemp.insert(item);
+	auto p = bst7.insert(item);
 	// p.first is the iterator
 	if (*(p.first) != item) {
 		cout << "Wrong iterator returned.  "
@@ -205,7 +229,7 @@ for (int item : vec7) {
 // Now test finding the elements we just put in
 for (int item: vec7) {
 	cout << "Finding " << item << "...." << endl;
-	BSTIterator<int> foundIt = btemp.find(item);
+	BSTIterator<int> foundIt = bst7.find(item);
 	if (*(foundIt) != item) {
 		cout << "incorrect value returned.  Expected iterator pointing to "
 			<< item << " but found iterator pointing to " << *(foundIt) 
@@ -226,11 +250,11 @@ cout << "traversal using iterator..." << endl;
 auto vit = vec7.begin(); // returns an iterator pointing to v[0]
 auto ven = vec7.end(); // returns an iterator pointing to the v[length] past-the-end elmt 
 
-// This is equivalent to BSTIterator<int> en = btemp.end();
-auto en = btemp.end();
+// This is equivalent to BSTIterator<int> en = bst7.end();
+auto en = bst7.end();
 
-// This is equivalent to BST<int>::iterator it = btemp.begin();
-auto it = btemp.begin(); // begin() eventually returns a ptr to the smallest elmt in the tree 
+// This is equivalent to BST<int>::iterator it = bst7.begin();
+auto it = bst7.begin(); // begin() eventually returns a ptr to the smallest elmt in the tree 
 for(; vit != ven; ++vit) {
 	if(! (it != en) ) { // we overwrode !=, so this is checking if it and en point to the same node
 		cout << *it << "," << *vit 
@@ -256,10 +280,16 @@ return 0;
 }
 
 //Test empty
-if(btemp.empty())==true) return -1;
+if(bst7.empty())==true) return -1;
+if(vec0.size() != 0) return -1;//TODO
+
 
 
 //Test size
+if(vec0.size() != 0){
+	return -1;
+}
+
 
 
 //Test height
