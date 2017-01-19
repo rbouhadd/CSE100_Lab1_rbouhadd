@@ -59,6 +59,7 @@ BSTIterator<Data>::BSTIterator(BSTNode<Data>* curr) {
 /** Dereference operator. */
 template<typename Data>
 Data BSTIterator<Data>::operator*() const {
+	//if(!curr) return NULL;//I ADDED THIS TODO
   return curr->data;
 }
   

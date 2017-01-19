@@ -27,7 +27,7 @@ int main() {
 
 	/* Create an STL vector of some ints */
 	/*test*/
-	/*
+	
 		 vector<int> v0; // Empty tree
 		 vector<int> v1; // One node tree
 		 vector<int> v5; // Five node tree
@@ -157,7 +157,7 @@ if ( b5.height() != 3 ) {
 	return -1; 
 }
 
-*/
+
 
 /* UNCOMMENT THE LINES BELOW TO TEST THE TEMPLATE-BASED ITERATOR */
 
@@ -168,8 +168,8 @@ BST<int> bst0;
 BST<int> bst1;
 BST<int> bst7;
 
-vector<int> vec0;// 0 Nodes
-vector<int> vec1;// 1 Node
+vector<int> vec0; // 0 Nodes
+vector<int> vec1; // 1 Node
 vector<int> vec7; // 7 nodes
 
 vec1.push_back(12);
@@ -194,7 +194,7 @@ for (int item : vec1) {
 			<< "Expected " << item << " but got " << *(p.first) << endl;
 		return -1;
 	}
-	
+
 	// p.second is the bool 
 	if (!p.second) {
 		cout << "Wrong boolean returned.  Expected true but got " 
@@ -215,7 +215,7 @@ for (int item : vec7) {
 			<< "Expected " << item << " but got " << *(p.first) << endl;
 		return -1;
 	}
-	
+
 	// p.second is the bool 
 	if (!p.second) {
 		cout << "Wrong boolean returned.  Expected true but got " 
@@ -227,8 +227,32 @@ for (int item : vec7) {
 }
 
 // Now test finding the elements we just put in
+for (int item: vec0) {
+	cout << "Finding " << item << "....";
+	BSTIterator<int> foundIt = bst0.find(item);
+	if (*(foundIt) != item) {
+		cout << "incorrect value returned.  Expected iterator pointing to "
+			<< item << " but found iterator pointing to " << *(foundIt) 
+			<< endl;
+		return -1;
+	}
+	cout << "success!" << endl;
+}
+
+for (int item: vec1) {
+	cout << "Finding " << item << "....";
+	BSTIterator<int> foundIt = bst1.find(item);
+	if (*(foundIt) != item) {
+		cout << "incorrect value returned.  Expected iterator pointing to "
+			<< item << " but found iterator pointing to " << *(foundIt) 
+			<< endl;
+		return -1;
+	}
+	cout << "success!" << endl;
+}
+
 for (int item: vec7) {
-	cout << "Finding " << item << "...." << endl;
+	cout << "Finding " << item << "....";
 	BSTIterator<int> foundIt = bst7.find(item);
 	if (*(foundIt) != item) {
 		cout << "incorrect value returned.  Expected iterator pointing to "
@@ -239,6 +263,12 @@ for (int item: vec7) {
 	cout << "success!" << endl;
 }
 
+// Test for an item that shouldn't be there
+BSTIterator<int> notThere = bst7.find(200);
+if ( notThere == bst7.end() ) {//we want a NULL
+	cout << "incorrect value returned. Expected nullptr, but found iterator pointing to "      << *(notThere)	<< endl;
+	return -1;
+}
 
 
 // Test the iterator: The iterator should give an in-order traversal
@@ -246,7 +276,7 @@ for (int item: vec7) {
 // Sort the vector, to compare with inorder iteration on the BST
 sort(vec7.begin(),vec7.end());
 
-cout << "traversal using iterator..." << endl;
+cout << "Traversal using iterator..." << endl;
 auto vit = vec7.begin(); // returns an iterator pointing to v[0]
 auto ven = vec7.end(); // returns an iterator pointing to the v[length] past-the-end elmt 
 
@@ -256,46 +286,75 @@ auto en = bst7.end();
 // This is equivalent to BST<int>::iterator it = bst7.begin();
 auto it = bst7.begin(); // begin() eventually returns a ptr to the smallest elmt in the tree 
 for(; vit != ven; ++vit) {
-	if(! (it != en) ) { // we overwrode !=, so this is checking if it and en point to the same node
+	if(! (it != en) ) { 
+	// we overwrode !=, so this is checking if it and en point to the same node
 		cout << *it << "," << *vit 
 			<< ": Early termination of BST iteration." << endl;
 		return -1;
-
 	}
-	cout << *it << endl;
+	
 	if(*it != *vit) {
+		
+		cout << "Now I'm here" << endl;
 		cout << *it << "," << *vit 
 			<< ": Incorrect inorder iteration of BST." << endl;
 		return -1;
 	}
-	++it;
-}
-
-cout << "success!" << endl;
-
-
-
-cout << "We were able to run through all tests w/o crashing" << endl;
-return 0;
+	it++;
 }
 
 //Test empty
-if(bst7.empty())==true) return -1;
-if(vec0.size() != 0) return -1;//TODO
-
-
-
-//Test size
-if(vec0.size() != 0){
+if((bst7.empty())==true) {
+  cout << "Incorrect because bst7 is not actually empty." << endl;	
+	return -1;
+}
+if((bst1.empty())==true) {
+  cout << "Incorrect because bst1 is not actually empty." << endl;	
 	return -1;
 }
 
+if((bst0.empty())==false) {
+  cout << "Incorrect because bst0 is not actually empty." << endl;	
+	return -1;
+}
 
+//Test size
+if(vec0.size() != bst0.size()){
+	cout << "Incorrect because vec0 and bst0 should both be empty." << endl;
+	return -1;
+}
+
+if(vec1.size() != bst1.size()){
+	cout << "Incorrect because vec1 and bst1 should have the same size." << endl;
+	return -1;
+}
+
+if(vec7.size() != bst7.size()){
+	cout << "Incorrect because vec7 and bst7 should have the same size." << endl;
+	return -1;
+}
 
 //Test height
+if( bst0.height() != -1 ) {
+	cout << "Incorrect. bst0's height should be 0. But it is instead: " << bst0.height()
+		<< endl;
+	return -1;
+}
 
+if( bst1.height() != 0 ) {
+	cout << "Incorrect. bst1's height should be 1." << endl;
+	return -1;
+}
 
+if( bst7.height() != 4 ) {
+	cout << "Incorrect. bst7's height should be 4." << endl;
+	return -1;
+}
 
+cout << "Wunderbar! Success!" << endl;
+cout << "We were able to run through all tests w/o crashing" << endl;
+return 0;
+}
 
 
 

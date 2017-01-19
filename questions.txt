@@ -56,15 +56,21 @@ The BST.hpp insert method passes its argument by reference whereas the BSTInt.h 
 
 
 *********
-Q6: 
+Q6: Which input file produces taller trees (sorted or random)? 
 
+actors.txt: 32
+actors100.txt14
+actors_sorted.txt: 11793
+The sorted actor list produces a much larger height tree because it always placed to the right of the previously added node.
 
+*********
+Q7: Research on your own the height you would expect for the tree produced by the sorted input and for the tree produced by the random input. Give the approximate height you would expect for each tree based on the size of the tree, N. Then build the tree for different sizes of sorted and randomly ordered input, report your results, and comment on whether what you see matches your expectations. Be sure to cite your source for the heights you expect.
 
+we would normaly expect a tree of size N to have a height of log(N) because as the tree gets taller, it has more spaces to place data. However, this is the minimum height of a fully balanced tree and it is very unlinkely to have a balanced tree. On the other hand a sorted list being inserted into a tree would give us a height of about N. So in conclusion the height is expected between log(N) and N.
 
+An example is our actors.txt and actors_sorted.txt. They both have a size of 11794. actors_sorted.txt had a height of 11793, which is closer to N but still in range.actors.txt had a height of 32 and log2(11794)=13.5. So we can conclude that actors.txt is within range and favors towards log(N).
 
-
-
-
+Both of these trees match the expectation of a BST. It is obvious that inserting things more randomly into a list is more efficient than arleady sorted linearly. However, this makes me think that there is an algorithm to sort an array in a way that inserts those items into the BST that makes it 100% efficient BST.
 
 
 

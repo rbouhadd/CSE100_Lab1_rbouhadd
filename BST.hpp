@@ -123,7 +123,6 @@ BST<Data>::~BST() {
  */
 template <typename Data>
 std::pair<BSTIterator<Data>, bool> BST<Data>::insert(const Data& item) {
-
   if (!root) {
 		root = new BSTNode<Data>(item);
 		++isize;
